@@ -32,10 +32,11 @@ public class EmployeeRestClient {
                 .collectList()
                 .block();
     }
-
+    
+    //http://localhost:8081/employeeservice/v1/employee/1
+    //PathVariable 사용할 때
     public Employee retrieveEmployeeById(int employeeId){
-        //http://localhost:8081/employeeservice/v1/employee/1
-        //PathVariable 사용할 때
+
         try{
             return webClient.get()
                     .uri(EMPLOYEE_BY_ID_V1,employeeId)
@@ -52,9 +53,11 @@ public class EmployeeRestClient {
         }
 
     }
-
+    
+    //http://localhost:8081/employeeservice/v1/employeeName?employee_name=chris
+    //Param 사용할 때
     public List<Employee> retrieveEmployeeByName(String employeeName){
-        //http://localhost:8081/employeeservice/v1/employeeName?employee_name=chris
+
         String uri = UriComponentsBuilder.fromUriString(EMPLOYEE_BY_NAME_v1)
                                         .queryParam("employee_name", employeeName)
                                         .build()
